@@ -27,6 +27,8 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
+        var waitSeconds = new WaitForSeconds(_delaySpawnEnemies);
+
         while (_countEnemies > _currentCountEnemies)
         {
             Instantiate(_enemyPrefab, _points[_currrentPoint].position, Quaternion.identity);
@@ -38,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
                 _currrentPoint = 0;
             }
 
-            yield return new WaitForSeconds(_delaySpawnEnemies);
+            yield return waitSeconds;
         }
     }
 }
